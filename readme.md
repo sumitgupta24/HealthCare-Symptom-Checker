@@ -1,65 +1,82 @@
-Educational Healthcare Assistant API
 
-Description:
-This Express.js server uses Cohere’s Command-A model to generate educational insights about symptoms provided by a user.
+#  Educational Healthcare Assistant API  
 
-Disclaimer: This tool does NOT provide medical advice or diagnosis. It is for educational purposes only.
+Description: 
+This Express.js server uses Cohere’s Command-R model to generate educational and informative insights based on user-provided symptoms.  
 
-Setup Instructions:
+>  Disclaimer: This tool does not provide medical advice or diagnosis. It is intended for educational purposes only. Always consult a qualified healthcare professional for medical concerns.  
 
-Clone or download the project:
-git clone <your-repo-url>
-cd <project-directory>
+---
 
-Install dependencies:
-npm install express dotenv cohere-ai
+##  Setup Instructions  
 
-Get an API key:
+1. Clone or Download the Project
+   bash
+   git clone <your-repo-url>
+   cd <project-directory>
 
-Sign up at Cohere (https://cohere.ai/
-)
+2. Install Dependencies
 
-Obtain your Cohere API Key from the dashboard
+   bash
+   npm install express dotenv cohere-ai
+   
 
-Create a .env file in the project root:
-COHERE_API_KEY="your_cohere_api_key_here"
+3. Get a Cohere API Key
 
-Running the Server:
+   * Sign up at [Cohere](https://cohere.ai/)
+   * Obtain your API key from the Cohere Dashboard
 
+4. Configure Environment Variables
+   Create a `.env` file in your project root and add:
+   COHERE_API_KEY="your_cohere_api_key_here"
+
+##  Running the Server
 node server.js
 
-The server will run on port 3000 by default.
+By default, the server runs at [http://localhost:3000](http://localhost:3000)
 
-API Endpoint:
+##  API Endpoint
 
-POST /api/v1/symptoms
+### POST `/api/v1/symptoms`
 
-Request Body (JSON):
+#### Request Body (JSON)
 {
-"symptoms": "fever, sore throat, fatigue",
-"age": 25,
-"sex": "female"
+  "symptoms": "fever, sore throat, fatigue",
+  "age": 25,
+  "sex": "female"
 }
 
-Response (JSON):
+####  Example Response (JSON)
 {
-"summary": "The symptoms indicate a likely viral infection, such as a common cold or mild flu.",
-"probable_conditions": [
-{
-"name": "Common Cold",
-"confidence": 0.7,
-"rationale": "Fever, sore throat, and fatigue are common symptoms of a cold."
-},
-{
-"name": "Influenza (Flu)",
-"confidence": 0.3,
-"rationale": "Mild fever and fatigue could indicate early-stage flu."
+  "summary": "These symptoms may indicate a mild viral infection, such as the common cold or early flu.",
+  "probable_conditions": [
+    {
+      "name": "Common Cold",
+      "confidence": 0.65,
+      "rationale": "Fever, sore throat, and fatigue are typical symptoms of the common cold."
+    },
+    {
+      "name": "Influenza (Flu)",
+      "confidence": 0.35,
+      "rationale": "Fatigue and fever can also suggest early-stage flu."
+    }
+  ],
+  "recommended_next_steps": [
+    "Get adequate rest and stay hydrated.",
+    "Monitor symptoms over the next 48 hours.",
+    "Consult a doctor if symptoms worsen or persist."
+  ],
+  "disclaimer": "This response is for educational purposes only and does not substitute professional medical advice."
 }
-],
-"recommended_next_steps": [
-"Rest and stay hydrated.",
-"Monitor temperature and symptoms.",
-"Consult a healthcare provider if symptoms worsen."
-],
-"disclaimer": "Educational only — not a diagnosis."
-}
+## Key Features
+
+* Generates educational health summaries based on user symptoms
+* Suggests possible conditions (non-diagnostic)
+* Offers general wellness recommendations
+* Built with Node.js, Express.js, and Cohere AI
+
+  
+###  License
+
+This project is released under the MIT License.
+
