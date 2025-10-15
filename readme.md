@@ -80,8 +80,3 @@ By default, the server runs at [http://localhost:3000](http://localhost:3000)
 
 This project is released under the MIT License.
 
-
----
-
-Would you like me to add a **small “Usage Example” section** with a `curl` or `Postman` example call too (so others can test your API easily)?
-```
